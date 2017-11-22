@@ -13,7 +13,6 @@ object FrequencyApp {
       .map(word => (word, 1))
       .reduceByKey(_ + _)
       .map(touple => (touple._2,touple._1))
-      .sortByKey()
       .top(50)
       .foreach(println(_))
   }
