@@ -1,7 +1,7 @@
 /**
   * Created by sebastian.iglesias on 21/11/2017.
   */
-import org.apache.spark.
+
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 
