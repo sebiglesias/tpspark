@@ -11,13 +11,10 @@ object InvertedIndex {
     textFile.flatMap{
       case (name, content) =>
         val words = content.toLowerCase.split("""\W+""")
-        words.map(word => (word,List(name):List[String]))
+        words.map(word => (word,Set(name):Set[String]))
     }.reduceByKey{
       case (list1, list2) =>
-        var result:List[String] = list1
-        list2.foreach(filename =>
-        if(!list1.contains(filename)) result = List(filename):::result)
-        result
+        list1 ++ list2
     }.saveAsTextFile("/Users/sebastian.iglesias/projects/faculty/Distribuidos/tpspark/src/main/scala/output")
     sc.stop()
   }
